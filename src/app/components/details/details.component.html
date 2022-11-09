@@ -1,0 +1,43 @@
+<div class="card-group m-3">
+  <div class="card text-bg-dark" style="max-width: 540px;">
+    <img [src]="drink.image" class="img-fluid rounded-start">
+    <div class="card-img-overlay">
+      <div class="card-body">
+        <h5 class="card-title">{{ drink.name}} ({{ drink.category }})</h5>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Ingredients</h5>
+      <ul>
+        <li *ngFor="let ingredient of drink.drinkIngr">
+          {{ ingredient.name }}: {{ ingredient.measure }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Instructions</h5>
+      <div *ngFor="let description of drink.drinkInstruction">
+        <p *ngIf="description.name === 'IT'">
+          {{description.langDes }}
+        </p>
+        <!--  <p *ngIf="description.name === 'ES'">
+          {{description.langDes }}
+        </p>
+        <p *ngIf="description.name === 'IT'">
+          {{description.langDes }}
+        </p>
+        <p *ngIf="description.name === 'DE'">
+          {{description.langDes }}
+        </p>
+        <p *ngIf="description.name === null">
+          {{description.langDes }}
+        </p> -->
+      </div>
+    </div>
+  </div>
+
+</div>
