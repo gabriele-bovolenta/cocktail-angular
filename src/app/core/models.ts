@@ -70,7 +70,7 @@ export interface RestApiDrinkById {
   strMeasure15?: string | null;
 }
 
-export interface DrinkById {
+export interface Drink {
   idDrink: string;
   name: string;
   category: string;

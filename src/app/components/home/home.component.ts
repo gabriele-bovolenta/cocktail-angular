@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CocktailByName, homeInputs } from 'src/app/core/models';
+import { CocktailByName, Drink, homeInputs } from 'src/app/core/models';
 import { ApiService } from 'src/app/_service/api.service';
 import { ActivatedRoute } from "@angular/router";
 
@@ -16,18 +16,10 @@ export class HomeComponent implements OnInit {
 
   drinksList: CocktailByName [] = []
   cartList: CocktailByName [] = []
-
+  
   constructor(private apiService : ApiService, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    // USING LOCAL STORAGE
-    /* const search = localStorage.getItem('search');
-
-    if(!!search) {
-      this.jsonIn.searchInput = search;
-      this.handleSearchDrinksByName()
-    } */
     
     this.route.paramMap.subscribe((res) => {
       const search = res.get('search')
@@ -36,6 +28,13 @@ export class HomeComponent implements OnInit {
         this.handleSearchDrinksByName();
       }
     })
+    // USING LOCAL STORAGE
+    /* const search = localStorage.getItem('search');
+
+    if(!!search) {
+      this.jsonIn.searchInput = search;
+      this.handleSearchDrinksByName()
+    } */
   }
 
   handleSearchDrinksByName = () => {

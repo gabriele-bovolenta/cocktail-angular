@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CocktailByName, DrinkById, RestApiCocktailById, RestApiCocktailByName, RestApiDrinkById, RestApidrinksByName } from '../core/models';
+import { CocktailByName, Drink, RestApiCocktailById, RestApiCocktailByName, RestApiDrinkById, RestApidrinksByName } from '../core/models';
 import { map } from 'rxjs';
 import { handleMapping, sortingDrinkByName } from '../core/logic';
 
@@ -34,15 +34,16 @@ export class ApiService {
       )
   }
 
-  getDrinkById = (id: string) => {
+  lookupDrinkById = (id: string) => {
     return this.httpClient
       .get<RestApiCocktailById>(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`)
       .pipe(
         map((res: RestApiCocktailById) => {
-          const resDrink : RestApiDrinkById = res.drinks[0]
-          const drink : DrinkById = handleMapping(resDrink)
-          return drink;
-        })
+          const resDrink: RestApiDrinkById = res.drinks[0]
+          const drink: Drink = handleMapping(resDrink)
+          debugger;
+          return drink; 
+        }) 
       )
   }
 }

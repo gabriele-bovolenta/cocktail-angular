@@ -1,4 +1,4 @@
-import { DrinkById, RestApiDrinkById, RestApidrinksByName } from "./models";
+import { Drink, RestApiDrinkById, RestApidrinksByName } from "./models";
 
 export const sortingDrinkByName = (
     query: RestApidrinksByName[]
@@ -7,8 +7,8 @@ export const sortingDrinkByName = (
     return sortedList;
 };
 
-export const handleMapping = (drink: RestApiDrinkById): DrinkById => {
-    const cleanDrink: DrinkById = {
+export const handleMapping = (drink: RestApiDrinkById): Drink => {
+    const cleanDrink: Drink = {
         idDrink: '',
         name: '',
         category: '',
@@ -64,5 +64,5 @@ export const handleMapping = (drink: RestApiDrinkById): DrinkById => {
         })
     }
 
-    return cleanDrink as DrinkById;
+    return cleanDrink;
 }

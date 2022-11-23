@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CocktailByName } from 'src/app/core/models';
 
 @Component({
@@ -15,6 +16,11 @@ export class DrinkLiComponent implements OnInit {
     category: '',
     image: ''
   }
+
+  // Esempio di come inizializzare un oggetto drink senza passare tutti i campi con stringhe vuote ad esempio
+  // non obbliga a definire tutti i campi opzionali e non obbliga a inizializzare di nuovo l'oggetto
+  // qui si possono utilizzare tutti i campi di CocktailByName ma non si possono aggiungere i campi   
+  drink2: Partial<CocktailByName> = {}
 
   @Input() showButton: boolean = false;
 
@@ -34,7 +40,9 @@ export class DrinkLiComponent implements OnInit {
     } 
   }
 
-  constructor() { }
+  constructor() {
+     
+   }
 
   ngOnInit(): void { }
 }
