@@ -1,0 +1,13 @@
+<li class="list-group-item d-flex justify-content-between align-items-center" [class.bg-success]="selected && showButton">
+    <div class="image-parent">
+        <img src={{drink.image}} class="img-fluid" alt={{drink.name}} style="max-width: 200px;" />
+    </div>
+    <div style="margin: 10px;">
+        <p>{{drink.name}}</p>
+    </div>
+</li>
+<div class="container" style="margin: 10px;" *ngIf="showButton">
+    <button type="button" class="btn btn-primary" [routerLink]="'/drink/' + drink.id">Details</button>
+    <button type="button" class="btn btn-success" (click)="handleCart(true)">Add</button>
+    <button type="button" class="btn btn-danger" (click)="handleCart(false)">Remove</button>
+</div>

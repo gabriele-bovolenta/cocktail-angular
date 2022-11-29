@@ -1,0 +1,38 @@
+<h1 class="text-center mt-3">SEARCH YOUR DRINK</h1>
+<div class="input-group mt-3">
+  <input type="search" class="form-control rounded" placeholder="Search a drink by its name" aria-label="Search"
+    aria-describedby="search-addon" name="searchDrink" id="searchDrink" [(ngModel)]="jsonIn.searchInput" />
+  <button type="button" class="btn btn-primary" [routerLink]="'/home/' + jsonIn.searchInput">
+    SEARCH
+  </button>
+</div>
+
+<nav class="mt-3">
+  <h3>Cocktail che cominciano con..</h3>
+  <ul class="pagination pagination-sm">
+    <li class="page-item" role="button"
+      [class.active]="letter === firstLetter"
+      *ngFor="let letter of letters">
+      <a class="page-link" (click)="changeFirstLetter(letter)">
+        {{ letter }}
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group" style="margin: 10px;">
+      <!-- [drink]="drink" [figlio]="padre"-->
+      <app-drink-li *ngFor="let drink of drinksList" [drink]="drink" [showButton]="true" (handleCount)="handleCartParent(drink, $event)"></app-drink-li>
+    </ul>
+  </div> 
+
+<!-- LISTA CARRELLO -->
+  <div class="col-md-6">
+    <ul class="list-group" style="margin: 10px;">
+      <!-- [drink]="drink" [figlio]="padre"-->
+      <app-drink-li *ngFor="let drink of cartList" [drink]="drink" [showButton]="false"></app-drink-li>
+    </ul>
+  </div>
+</div>
