@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
   handleCartParent = (drink: CocktailByName, $event: boolean) => {
     if ($event === true) {
-      if (this.count<5) {
+      if (this.count < 5) {
         this.cartList.push(drink);
         this.count++;
         console.log(this.count);
