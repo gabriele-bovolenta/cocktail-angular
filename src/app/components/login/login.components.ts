@@ -6,17 +6,19 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
+
 export class LoginComponent {
   jsonIn = {
     username: '',
     password: '',
     rememberMe: false,
   }
+
   @ViewChild('loginForm') loginForm!: NgForm;
   showErrors = false;
   showPassword = false;
-  
-  constructor(private router: Router) {}
+
+  constructor(private router: Router) { }
 
   signIn() {
     if (this.loginForm.form.invalid) {
@@ -25,6 +27,4 @@ export class LoginComponent {
       this.router.navigateByUrl('/home');
     }
   }
-
-
 }
