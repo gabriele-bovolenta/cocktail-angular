@@ -16,11 +16,8 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
-
-    debugger;
     this.route.data.subscribe(({drink}) => {
       this.drink = drink;
-      console.log('sei dentro');
     })
     // paramMap è observable che ritorna un oggetto, invece snapshot è come se scattasse una foto
    

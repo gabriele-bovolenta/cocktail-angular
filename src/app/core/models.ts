@@ -3,6 +3,26 @@
 export interface homeInputs {
   searchInput: string;
 }
+
+// COCKTAILS BY LETTER SEARCH
+export interface RestApiCocktailByLetter {
+  drinks: RestApidrinksByLetter[];
+}
+
+export interface RestApidrinksByLetter {
+  idDrink: string;
+  strDrink: string;
+  strCategory: string;
+  strDrinkThumb: string;
+}
+
+export interface CocktailByLetter {
+  id: string;
+  name: string;
+  category: string;
+  image: string;
+}
+
 // COCKTAILS BY NAME SEARCH
 export interface RestApiCocktailByName {
   drinks: RestApidrinksByName[];

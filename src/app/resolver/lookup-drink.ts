@@ -12,8 +12,6 @@ export class LookUpDrinkByIdResolver implements Resolve<Drink> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Drink> {
-    console.log('dentro resolver');
-    
     return this.service.lookupDrinkById(route.paramMap.get('idDrink')!);
   }
 } 

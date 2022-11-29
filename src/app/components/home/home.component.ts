@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CocktailByName, Drink, homeInputs } from 'src/app/core/models';
 import { ApiService } from 'src/app/_service/api.service';
 import { ActivatedRoute } from "@angular/router";
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +15,18 @@ export class HomeComponent implements OnInit {
     searchInput: ''
   }
 
+  letters =  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  firstLetter = '';
+
+  drinks : Drink[] = [];
+
   drinksList: CocktailByName [] = []
   cartList: CocktailByName [] = []
   
   constructor(private apiService : ApiService, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.changeFirstLetter('A');
     this.route.paramMap.subscribe((res) => {
       const search = res.get('search')
       if (!!search) {
@@ -35,6 +41,14 @@ export class HomeComponent implements OnInit {
       this.jsonIn.searchInput = search;
       this.handleSearchDrinksByName()
     } */
+  }
+
+  changeFirstLetter(letter: string) {
+    this.firstLetter = letter;
+    console.log(this.firstLetter);
+    
+    this.apiService.searchCocktailByFirstLetter(this.firstLetter)
+    .subscribe((res) => (this.drinksList = res))
   }
 
   handleSearchDrinksByName = () => {
